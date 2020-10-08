@@ -1,0 +1,7 @@
+node_modules
+*.log
+build
+.env
+*.txt
+scripts
+serviceAccount.json

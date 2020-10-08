@@ -1,0 +1,29 @@
+#addon-search-container {
+  @apply w-full flex max-h-full;
+}
+
+#addon-search {
+  @apply w-1/2 flex flex-col items-center mt-2 text-black;
+
+  & input[type="text"] {
+    @apply h-12 rounded-l py-1 pl-3 pr-1 w-32;
+  }
+}
+.addon-search-input-container {
+  @apply flex;
+  & svg {
+    @apply bg-white h-12 w-8 pr-2 rounded-r mr-2;
+  }
+}
+
+#cannot-find-addon-info {
+  @apply text-base bg-indigo-800 text-indigo-300 rounded m-3 p-3;
+}
+
+.unset-button {
+  @apply text-indigo-100 p-2 border border-indigo-300 font-semibold rounded w-32 self-center;
+}
+
+.unset-button:hover {
+  @apply bg-light-up;
+}

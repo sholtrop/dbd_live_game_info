@@ -1,0 +1,65 @@
+#build-view {
+  grid-template-rows: 1fr 1fr 4rem;
+  @apply grid w-full h-full items-center;
+  grid-template-areas:
+    "pl pd pd"
+    "pl pd pd"
+    "al al al";
+}
+
+div#playing-indicator {
+  grid-area: pi;
+  @apply hidden;
+}
+
+#notplaying-indicator {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.perk-list {
+  grid-area: pl;
+  @apply w-48;
+}
+
+.perk-container + .perk-container {
+  @apply mt-2;
+}
+
+.addon-list {
+  grid-area: al;
+  max-width: 20rem;
+  @apply hidden flex-row border-t border-gray-700 pt-1 w-full mt-2 h-12;
+
+  & button + button {
+    @apply mt-1;
+  }
+}
+
+.perk-description {
+  grid-area: pd;
+  @apply self-start;
+}
+
+@screen md {
+  .addon-list {
+    @apply flex;
+  }
+}
+
+@screen xl {
+  div#build-view {
+    grid-template-rows: 4rem repeat(3, 1fr);
+    grid-template-areas:
+      "pi pi pi"
+      "pl pd pd"
+      "pl pd pd"
+      "al pd pd";
+  }
+  div#playing-indicator {
+    @apply flex;
+  }
+  .addon-list {
+    @apply flex-col w-56 mt-4 h-auto;
+  }
+}

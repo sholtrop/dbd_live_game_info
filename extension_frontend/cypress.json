@@ -1,0 +1,8 @@
+{
+  "projectId": "tmmfbq",
+  "viewportWidth": 1200,
+  "viewportHeight": 800,
+  "experimentalFetchPolyfill": true,
+  "watchForFileChanges": false,
+  "screenshotOnRunFailure": false
+}

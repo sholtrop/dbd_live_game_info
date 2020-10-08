@@ -1,0 +1,18 @@
+#share-identity {
+  @apply p-4 text-white text-base flex flex-col items-center justify-center;
+
+  & p {
+    @apply w-2/3 max-w-md;
+  }
+
+  & button {
+    @apply p-2 bg-indigo-700 font-semibold rounded-md mt-2;
+    &:hover {
+      @apply bg-indigo-600;
+    }
+  }
+
+  & .no-effect {
+    @apply text-orange-600 italic text-sm text-center mb-2;
+  }
+}

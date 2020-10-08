@@ -1,0 +1,65 @@
+@import "../../css/tailwind.css";
+@import "../PlayingIndicator//PlayingIndicator.css";
+@import "../ConfigPage/ConfigPage.css";
+
+button:focus {
+  outline: none;
+}
+
+#live-config-container {
+  @apply w-full text-white flex flex-col items-center p-3 pb-12 relative;
+
+  &.light {
+    @apply bg-black;
+  }
+
+  & label {
+    @apply text-xl font-semibold underline mb-2;
+  }
+  .intro-text {
+    @apply w-full max-w-sm leading-loose py-1;
+  }
+
+  #moderator-controls {
+    @apply w-full fixed bottom-0 z-40 h-auto;
+    & .main-buttons {
+      @apply w-full max-w-sm  flex items-center justify-center pr-3 py-1
+      border-t border-gray-800 bg-gray-900 rounded-t-lg;
+    }
+    & .main-buttons button[class] {
+      @apply w-full;
+      max-width: 7rem;
+    }
+    & .main-buttons button + button {
+      @apply ml-3;
+    }
+
+    & .moderator-controls-message {
+      @apply w-full max-w-xs top-0 left-0 absolute mb-0 h-auto;
+    }
+  }
+}
+
+.live-config-component {
+  @apply flex flex-col items-center border m-1
+  border-gray-400 p-2 w-full h-56 max-w-md;
+
+  & + & {
+    @apply border-b;
+  }
+
+  & .inactive,
+  &.inactive {
+    @apply text-gray-600 border-gray-700;
+  }
+}
+
+.broadcaster-build-message {
+  @apply fixed top-0 left-0 z-30 m-3;
+}
+
+@screen md {
+  #live-config-container {
+    @apply flex-row items-start;
+  }
+}

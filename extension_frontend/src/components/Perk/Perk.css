@@ -1,0 +1,53 @@
+.perk-container {
+  @apply w-full text-white flex items-center ml-4
+  rounded-md overflow-hidden px-1 font-semibold;
+  max-width: 14rem;
+
+  &:not(.empty):hover,
+  &:not(.empty).active {
+    @apply bg-light-up;
+  }
+  .small & {
+    max-width: 10rem;
+  }
+
+  .small & picture {
+    @apply w-10 h-10;
+  }
+}
+
+.perk-container picture {
+  @apply mr-3 relative flex-shrink-0;
+  width: 3.5rem;
+  height: 3.5rem;
+
+  & img {
+    @apply absolute z-10;
+  }
+  & img:last-child {
+    z-index: 0;
+  }
+}
+
+.rank-container {
+  @apply flex flex-col absolute transform -rotate-45 top-0;
+  right: 0.4rem;
+
+  & div {
+    @apply bg-white transform;
+    --transform-rotate: 70deg;
+    width: 0.2rem;
+    height: 0.35rem;
+    margin-top: 0.1rem;
+  }
+}
+
+.small .rank-container {
+  right: 0.15rem;
+  & div {
+    --transform-rotate: 70deg;
+    width: 0.15rem;
+    height: 0.3rem;
+    margin-top: 0.01rem;
+  }
+}

@@ -1,0 +1,16 @@
+.addon-container {
+  @apply w-full text-white flex items-center ml-4
+  rounded-md overflow-hidden px-1 py-2 font-bold text-sm;
+  max-width: 14rem;
+
+  &:hover:not(.empty),
+  &.active:not(.empty) {
+    @apply bg-light-up;
+  }
+  &.empty {
+    @apply cursor-not-allowed text-gray-600;
+  }
+  & img {
+    @apply w-8 h-8 mr-2;
+  }
+}

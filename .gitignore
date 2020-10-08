@@ -1,0 +1,4 @@
+*.code-workspace
+.mypy_cache
+.vscode
+node_modules

@@ -1,0 +1,129 @@
+{
+  "allowHttpBackend": false,
+  "backendCommand": "",
+  "backendFolderName": "",
+  "certificateExceptions": [
+    {
+      "isAllowed": true,
+      "isEphemeral": false,
+      "isOrigin": true,
+      "value": "https://localhost:8080"
+    },
+    {
+      "isAllowed": true,
+      "isEphemeral": false,
+      "isOrigin": true,
+      "value": "wss://localhost:8080"
+    }
+  ],
+  "extensionViews": [
+    {
+      "channelId": "123456787",
+      "configurationAnchor": "video_overlay",
+      "displayChannelName": "sjorsholtrop",
+      "features": {
+        "isBitsEnabled": false,
+        "isChatEnabled": false,
+        "isSubscriptionStatusAvailable": false
+      },
+      "frameSize": {
+        "width": 1280,
+        "height": 720
+      },
+      "id": "1",
+      "isPopout": false,
+      "label": "broadcaster",
+      "linked": false,
+      "linkedUserId": "",
+      "orientation": "Portrait",
+      "type": "video_overlay",
+      "viewerType": "Broadcaster"
+    },
+    {
+      "channelId": "29697242",
+      "configurationAnchor": "video_overlay",
+      "displayChannelName": "sjorsholtrop",
+      "features": {
+        "isBitsEnabled": true,
+        "isChatEnabled": false,
+        "isSubscriptionStatusAvailable": false
+      },
+      "frameSize": {
+        "width": 1280,
+        "height": 720
+      },
+      "id": "2",
+      "isPopout": false,
+      "label": "config",
+      "linked": true,
+      "linkedUserId": "265737932",
+      "orientation": "Portrait",
+      "type": "config",
+      "viewerType": "Broadcaster"
+    }
+  ],
+  "manifest": {
+    "anchor": "video_overlay",
+    "assetUrls": [],
+    "authorName": "Sjors Holtrop",
+    "bitsEnabled": true,
+    "canInstall": true,
+    "configUrl": "https://localhost:8080/config.html",
+    "configurationLocation": "hosted",
+    "description": "This extension allows you to share your Dead by Daylight builds with your viewers: They will have access to the perk / addon information that is normally displayed in-game when you hover it.\nYou can set the build from the Stream Manager, and your moderators can set it from the extension screen itself. \n\nOnce a build is published, it will be sent to all your viewers in real-time, after which they can view all of the relevant information.\nDoing this will greatly help out people who are unfamiliar with or new to Dead by Daylight or out of the loop with the latest perks. \nThey won't have to ask around in chat for the name of the perk and then go to the wiki to know what you're using.\n\nThis extension is unofficial and not in any way endorsed by Behaviour Interactive. Displayed information may not be accurate. \n\nFeedback or suggestions are always welcome!",
+    "eulaTosUrl": "",
+    "hasChatSupport": false,
+    "iconUrl": "https://extensions-discovery-images.twitch.tv/4xyn35uwlhr23ek0xzmpf1w7tmen2q/0.0.1/logobf2f56cb-2c4e-4ba4-928e-0c508470e1f5",
+    "iconUrls": {
+      "100x100": "https://extensions-discovery-images.twitch.tv/4xyn35uwlhr23ek0xzmpf1w7tmen2q/0.0.1/logobf2f56cb-2c4e-4ba4-928e-0c508470e1f5",
+      "24x24": "https://extensions-discovery-images.twitch.tv/4xyn35uwlhr23ek0xzmpf1w7tmen2q/0.0.1/taskbar7a93cc36-7108-4639-bcb3-285b08dc71a4",
+      "300x200": "https://extensions-discovery-images.twitch.tv/4xyn35uwlhr23ek0xzmpf1w7tmen2q/0.0.1/discovery25e91596-b1c4-4cc4-bfe2-c82083d508b7"
+    },
+    "id": "4xyn35uwlhr23ek0xzmpf1w7tmen2q",
+    "installationCount": -42,
+    "liveConfigUrl": "https://localhost:8080/live_config.html",
+    "name": "DbD Live Game Info",
+    "panelHeight": 0,
+    "privacyPolicyUrl": "",
+    "requestIdentityLink": true,
+    "requiredBroadcasterAbilities": [],
+    "screenshotUrls": [
+      "https://extensions-discovery-images.twitch.tv/4xyn35uwlhr23ek0xzmpf1w7tmen2q/0.0.1/screenshotc9f46ba0-9d43-4a02-bf64-86772b50da5a",
+      "https://extensions-discovery-images.twitch.tv/4xyn35uwlhr23ek0xzmpf1w7tmen2q/0.0.1/screenshotf183ecee-bde1-4e2a-ac17-a0ed4c6136b0",
+      "https://extensions-discovery-images.twitch.tv/4xyn35uwlhr23ek0xzmpf1w7tmen2q/0.0.1/screenshotf62f4535-632d-4586-b936-27765e263b53",
+      "https://extensions-discovery-images.twitch.tv/4xyn35uwlhr23ek0xzmpf1w7tmen2q/0.0.1/screenshot0bdf629d-b6b2-4599-928e-a5097b539a0c"
+    ],
+    "sku": "",
+    "state": "Testing",
+    "subscriptionsSupportLevel": "optional",
+    "summary": "Easily share your Dead by Daylight builds with your viewers in real-time.",
+    "supportEmail": "sjors@sholtrop.dev",
+    "vendorCode": "",
+    "version": "0.0.2",
+    "viewerSummary": "View information about the streamer's current perks and addons.",
+    "viewerUrl": "",
+    "viewerUrls": {
+      "videoOverlay": "https://localhost:8080/video_overlay.html"
+    },
+    "views": {
+      "videoOverlay": {
+        "viewerUrl": "https://localhost:8080/video_overlay.html",
+        "canLinkExternalContent": false
+      },
+      "config": {
+        "viewerUrl": "https://localhost:8080/config.html",
+        "canLinkExternalContent": false
+      },
+      "liveConfig": {
+        "viewerUrl": "https://localhost:8080/live_config.html",
+        "canLinkExternalContent": false
+      }
+    },
+    "whitelistedConfigUrls": [],
+    "whitelistedPanelUrls": []
+  },
+  "frontendCommand": "yarn start",
+  "frontendFolderName": "",
+  "name": "DbD Live Game Info",
+  "version": 2
+}

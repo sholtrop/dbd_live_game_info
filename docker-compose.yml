@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  backend:
+    tty: true
+    build: "./extension_backend"
+    environment:
+      FLASK_ENV: development
+      FLASK_APP: api/main.py
+      CLIENT_SECRET: super-secret
+    ports:
+      - "5000:5000"
+  frontend:
+    tty: true
+    build: "./extension_frontend"
+    environment:
+      NODE_ENV: test
+      API_URL: http://backend:5000
+    ports:
+      - "8080:8080"
+    command: "yarn start"
+    depends_on:
+      - backend
+  cypress:
+    tty: true
+    build: "./extension_frontend/cypress"
+    depends_on:
+      - frontend
+    environment:
+      - CYPRESS_VIDEO=false
+      - CYPRESS_baseUrl=http://frontend:8080
+    volumes:
+      - ./extension_frontend/cypress:/app/cypress
+      - ./extension_frontend/cypress.json:/app/cypress.json
+    command: "npx cypress run --browser chrome"

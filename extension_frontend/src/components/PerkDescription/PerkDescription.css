@@ -1,0 +1,64 @@
+.perk-description {
+  @apply select-all ml-4 text-xs overflow-y-hidden;
+
+  & li {
+    @apply ml-2;
+
+    &::before {
+      @apply mr-2;
+      content: "•";
+    }
+  }
+
+  & span:not(.quote) {
+    @apply font-semibold text-base;
+  }
+
+  & b {
+    @apply font-bold;
+  }
+
+  & i {
+    @apply italic;
+  }
+
+  & .yellow {
+    @apply text-yellow-500;
+  }
+
+  & .purple {
+    @apply text-purple-500;
+  }
+
+  & .red {
+    @apply text-pink-800;
+  }
+
+  & .darkred {
+    @apply text-red-600;
+  }
+
+  & .green {
+    @apply text-green-500;
+  }
+
+  & .brown {
+    @apply text-orange-700;
+  }
+
+  & .quote {
+    @apply text-orange-300 italic;
+  }
+}
+
+@screen md {
+  .perk-description {
+    @apply text-sm;
+  }
+}
+
+@screen xl {
+  .perk-description {
+    @apply px-4;
+  }
+}

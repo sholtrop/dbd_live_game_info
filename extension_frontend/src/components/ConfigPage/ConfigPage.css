@@ -1,0 +1,145 @@
+@import "../../tailwind.css";
+
+#config-page {
+  @apply flex flex-col text-base font-sans w-full py-10 px-4 items-center text-black;
+
+  & * {
+    @apply max-w-4xl;
+  }
+
+  &.dark {
+    @apply text-gray-200;
+  }
+
+  & h1 {
+    @apply text-2xl text-center font-bold;
+  }
+
+  & .disclaimer {
+    @apply p-2 rounded my-3;
+  }
+
+  &.light .disclaimer {
+    @apply bg-red-200 text-red-800;
+  }
+
+  &.dark .disclaimer {
+    @apply bg-red-800 text-red-200;
+  }
+
+  & p {
+    @apply max-w-md px-4;
+  }
+
+  & .name-input {
+    @apply shadow border border-gray-400 p-2 bg-gray-300 mt-4 text-black;
+    &:hover {
+      @apply bg-gray-200;
+    }
+  }
+}
+
+h1,
+h2,
+h3 {
+  @apply text-indigo-200;
+}
+.light h1,
+.light h2,
+.light h3 {
+  @apply text-indigo-800;
+}
+
+.sub-text {
+  @apply text-sm w-40 text-gray-500;
+
+  .light & {
+    @apply text-gray-700;
+  }
+}
+
+.authorize {
+  @apply p-2 m-1 rounded-lg font-semibold text-lg text-center bg-indigo-800 
+  text-white font-sans flex;
+}
+
+.authorize:hover {
+  @apply bg-indigo-700;
+}
+
+.config-step {
+  @apply flex flex-col items-start relative px-2 w-full max-w-3xl mt-8 z-30 border-t border-gray-500 pt-2;
+}
+
+.config-question {
+  @apply text-xl text-center;
+}
+
+.can-set {
+  @apply flex flex-col items-center mt-2 relative z-30;
+
+  & p {
+    @apply px-4 text-white;
+  }
+  & label {
+    @apply w-full;
+  }
+}
+
+.locked-overlay {
+  @apply rounded-sm absolute border border-gray-600 h-56 flex flex-col items-center justify-end text-sm z-10;
+  top: 2.8rem;
+  .auth-disclaimer {
+    @apply w-full px-4;
+  }
+  .light & {
+    @apply border-gray-800;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.small-loading-circle {
+  @apply w-5 h-5 mr-2 inline-block;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #2f62b5;
+  border-radius: 50%;
+  animation: spin 2s linear infinite;
+}
+
+#saving-indicator {
+  @apply text-base fixed top-0 right-0 p-1 bg-indigo-700 text-white rounded flex items-center justify-center w-40 z-50;
+
+  .check {
+    @apply text-green-600 font-bold w-5 h-5 flex items-center justify-center;
+  }
+}
+
+.auth-loading {
+  @apply flex justify-center items-center mb-10;
+}
+
+@screen md {
+  .example-images {
+    @apply flex-row;
+  }
+
+  .can-set {
+    @apply flex-row items-start;
+
+    & label {
+      @apply w-auto;
+    }
+  }
+
+  .locked-overlay {
+    @apply h-32 top-0 right-0 px-10 w-4/5;
+  }
+}

@@ -1,0 +1,33 @@
+.killer-search-container {
+  @apply flex flex-col items-center justify-start w-40 text-gray-200 h-full;
+}
+
+.killer-search-bar {
+  @apply w-full h-10 bg-black border-2 border-orange-700 p-1 text-center capitalize rounded flex items-center;
+}
+.killer-search-bar:focus {
+  @apply border-orange-500;
+}
+
+.killer-search-bar.valid {
+  @apply border-green-700 font-bold cursor-pointer;
+}
+
+.killer-search-results {
+  @apply flex flex-col capitalize w-full overflow-y-auto;
+  max-height: 65%;
+  scrollbar-width: thin;
+}
+
+.killer-search-results li {
+  @apply bg-black;
+}
+.killer-search-results li:hover {
+  @apply bg-gray-800;
+}
+.killer-search-results li + li {
+  @apply border-t;
+}
+.killer-search-results li button {
+  @apply capitalize text-center font-semibold w-full h-full p-1;
+}

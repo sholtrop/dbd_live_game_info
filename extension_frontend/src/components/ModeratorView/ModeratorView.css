@@ -1,0 +1,150 @@
+#moderator-view {
+  & *.visible {
+    visibility: hidden !important;
+  }
+  @apply w-full h-full overflow-hidden grid invisible;
+
+  & #viewport-too-small {
+    @apply absolute inset-0 visible flex items-center justify-center text-lg italic;
+  }
+
+  & #mod-info {
+    grid-area: info;
+    @apply text-sm bg-indigo-800 p-2 pl-4 hidden
+    flex-col items-center justify-start rounded;
+  }
+
+  & #mod-info li::before {
+    @apply mr-2;
+    content: "•";
+  }
+
+  & .sub-info {
+    @apply text-purple-300 italic pt-1;
+  }
+
+  & label {
+    @apply text-lg font-semibold border-b w-40 text-center pb-1 mb-2;
+    &.inactive {
+      @apply text-gray-600 border-gray-600;
+    }
+  }
+
+  & .killer-select {
+    grid-area: kname;
+    @apply w-full flex flex-col items-center mt-8;
+  }
+
+  & .perk-select {
+    grid-area: perks;
+    @apply w-48 flex flex-col items-center;
+    & picture {
+      @apply w-10 h-10;
+    }
+  }
+
+  & .perk-select-modal,
+  & .addon-select-modal {
+    @apply justify-center items-center p-2;
+
+    & p {
+      @apply text-lg text-center;
+    }
+  }
+
+  & .addon-select {
+    grid-area: addons;
+    @apply w-48 flex flex-col items-center mt-2;
+  }
+}
+
+#moderator-controls {
+  grid-area: buttons;
+  @apply flex flex-col items-center justify-center h-full;
+
+  & .main-buttons {
+    @apply flex;
+  }
+
+  & .main-buttons button {
+    @apply h-10 rounded-lg font-semibold ml-2;
+    width: 4.5rem;
+  }
+}
+
+.moderator-controls-message {
+  @apply flex items-center justify-center;
+  & .message {
+    border-left-width: 10px;
+    min-height: 4rem;
+    @apply invisible py-1 px-3 rounded flex items-center justify-center leading-tight border-transparent w-56;
+
+    &.success {
+      @apply visible border-green-900 bg-green-800 text-green-200;
+    }
+    &.warning {
+      @apply visible border-yellow-900 bg-yellow-800 text-yellow-200;
+    }
+    &.error {
+      @apply visible border-red-900 bg-red-800 text-red-200;
+    }
+    &.pending {
+      @apply visible border-purple-900 bg-purple-800 text-purple-200;
+    }
+  }
+}
+
+.mod-message-display {
+  @apply h-full flex items-center justify-center;
+}
+
+@screen xl {
+  #moderator-view {
+    & *.visible {
+      @apply visible !important;
+    }
+    @apply grid visible;
+    grid-template-areas:
+      "info mode perks"
+      "info mode perks"
+      "info kname perks"
+      "buttons kname addons"
+      "buttons kname addons";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+
+    & #mod-info {
+      @apply flex;
+    }
+
+    & #viewport-too-small {
+      @apply invisible;
+    }
+  }
+
+  .moderator-controls-message {
+    @apply mb-0;
+  }
+}
+
+.mode {
+  grid-area: mode;
+  @apply flex flex-col items-center;
+
+  & button {
+    @apply w-32 py-1 flex items-center justify-start rounded my-1 text-sm font-semibold border-2 border-transparent;
+    & svg {
+      @apply mx-1;
+    }
+    &.not-playing {
+      @apply bg-transparent border border-gray-700;
+    }
+    & div {
+      @apply font-bold;
+    }
+  }
+  & button:hover,
+  & button.active {
+    @apply border-orange-700;
+  }
+}

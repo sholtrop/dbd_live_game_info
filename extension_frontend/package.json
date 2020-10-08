@@ -1,0 +1,78 @@
+{
+  "name": "dbd_live_game_info",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --mode development",
+    "testing": "cross-env NODE_ENV=test webpack-dev-server --mode development",
+    "host": "webpack-dev-server --mode production",
+    "cy:open": "cross-env CYPRESS_baseUrl=https://localhost:8080 cypress open",
+    "cy:run": "cross-env CYPRESS_baseUrl=https://localhost:8080 cypress run"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-react": "^7.7.4",
+    "@types/dompurify": "^2.0.2",
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.9.8",
+    "clean-webpack-plugin": "^1.0.1",
+    "css-loader": "^3.4.0",
+    "cypress": "^4.11.0",
+    "cypress-wait-until": "^1.7.1",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "eslint": "^7.5.0",
+    "eslint-plugin-cypress": "^2.11.1",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^4.0.0-beta.11",
+    "identity-obj-proxy": "^3.0.0",
+    "isomorphic-fetch": "^2.2.1",
+    "jest-webpack-resolver": "^0.3.0",
+    "node-sass": "^4.13.0",
+    "regenerator-runtime": "^0.13.3",
+    "source-map-loader": "^1.0.1",
+    "style-loader": "^0.21.0",
+    "ts-jest": "^26.1.3",
+    "ts-loader": "^8.0.1",
+    "typescript": "^3.9.6",
+    "webpack": "^4.41.3",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {
+    "@types/jest": "^26.0.7",
+    "@types/jsonwebtoken": "^8.5.0",
+    "autoprefixer": "^9.8.5",
+    "babel-runtime": "^6.26.0",
+    "core-js": "^3.5.0",
+    "html-react-parser": "^0.13.0",
+    "https-serve": "^1.0.0",
+    "jest": "^26.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "postcss-cli": "^7.1.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-nested": "^4.2.3",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-draggable": "^4.4.3",
+    "tailwindcss": "^1.4.6",
+    "wait-on": "^5.1.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  },
+  "jestWebpackResolver": {
+    "webpackConfig": "./webpack.config.js"
+  },
+  "peerDependencies": {}
+}

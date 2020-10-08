@@ -1,0 +1,65 @@
+#perk-search {
+  @apply flex flex-col items-center max-h-full mt-2 text-black;
+
+  & input[type="text"] {
+    @apply h-12 rounded-l py-1 pl-3 pr-1 w-32;
+  }
+}
+
+.perk-search-input-container {
+  @apply flex;
+  & svg {
+    @apply bg-white h-12 w-8 pr-2 rounded-r mr-2;
+  }
+}
+
+.perk-search-results {
+  @apply overflow-y-scroll mt-6 mb-8 text-white rounded-sm border-indigo-400
+  border-t border-r border-b w-64 overflow-x-hidden;
+  max-height: 100%;
+  scrollbar-width: thin;
+
+  & li button {
+    @apply w-full flex items-center border-b border-l border-indigo-400 bg-black pr-2;
+  }
+
+  & li button:hover {
+    @apply bg-gray-800;
+  }
+
+  & li img {
+    @apply h-10 mx-2;
+  }
+}
+
+.perk-search-no-results {
+  @apply text-indigo-300 text-lg mt-4;
+}
+
+.rank-selector {
+  @apply flex text-2xl items-center text-white ml-2;
+  & button {
+    @apply border-b-2 font-semibold border-transparent h-8 w-8 flex items-center justify-center;
+  }
+  & button.active,
+  button:hover {
+    @apply border-indigo-300;
+  }
+}
+
+.unset-button {
+  @apply text-indigo-100 p-2 border border-indigo-300 font-semibold rounded w-24 self-center ml-2;
+}
+
+.unset-button:hover {
+  @apply bg-light-up;
+}
+
+/* 
+.perk-unset {
+  @apply ml-2 p-1 border border-transparent font-semibold text-white rounded;
+
+  &:hover {
+    @apply border-indigo-300;
+  }
+} */

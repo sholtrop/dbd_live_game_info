@@ -1,0 +1,37 @@
+.radio-button-container {
+  @apply flex items-center relative select-none p-2 cursor-pointer;
+  & .checkmark {
+    @apply w-4 h-4 inline-flex mr-2 rounded-full relative items-center justify-center
+    bg-gray-400 cursor-pointer border border-gray-700 flex-shrink-0;
+  }
+  & input[type="radio"]:checked + .checkmark::after {
+    @apply w-2 h-2 bg-indigo-700 absolute rounded-full flex-shrink-0;
+    content: "";
+  }
+
+  & input[type="radio"] {
+    @apply invisible;
+  }
+
+  &:hover {
+    & .checkmark {
+      @apply bg-gray-300;
+    }
+  }
+}
+
+.radio-button-container.locked {
+  @apply cursor-not-allowed text-gray-600;
+
+  &:hover {
+    & .checkmark {
+      @apply cursor-not-allowed;
+    }
+  }
+}
+
+@screen md {
+  .radio-button-container {
+    @apply flex-row;
+  }
+}

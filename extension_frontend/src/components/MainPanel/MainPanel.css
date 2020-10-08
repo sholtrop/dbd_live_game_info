@@ -1,0 +1,140 @@
+#main-panel {
+  @apply w-full justify-between select-none relative max-w-xl opacity-0 transition-opacity duration-300
+  px-4 py-2 rounded-b-lg rounded-tr-lg m-10 border-indigo-700 z-20 pointer-events-none;
+  border-width: 5px;
+  max-height: 28rem;
+
+  &.in-view {
+    @apply opacity-100 pointer-events-auto;
+  }
+
+  & .perk-container {
+    max-width: 11rem;
+  }
+
+  & .perk-container picture {
+    @apply w-10 h-10;
+  }
+}
+
+.main-panel-dragger {
+  @apply absolute w-5 h-10 bg-indigo-700 cursor-move rounded-r-lg flex flex-col items-center;
+  @apply justify-center border-b border-r border-t border-indigo-700;
+  top: 0;
+  right: -1.45rem;
+}
+
+.main-panel-buttons {
+  @apply absolute w-full flex items-end justify-end left-0 px-2 h-12;
+  z-index: -2;
+  top: -3rem;
+
+  & button {
+    @apply bg-indigo-700 h-12 text-indigo-300 text-sm font-bold flex items-center
+    rounded-t-lg mr-2 pl-2 transform transition-transform duration-200 translate-y-2;
+    width: 7.5rem;
+  }
+
+  & button:focus {
+    outline: none !important;
+  }
+
+  & button:hover,
+  & button.active {
+    @apply text-white translate-y-0;
+  }
+
+  & .star {
+    @apply absolute top-0 right-0 mr-3 mt-2 
+    text-yellow-600 text-2xl leading-none tracking-tighter;
+  }
+}
+
+#panel-left-edge {
+  @apply absolute bg-indigo-700 text-xs h-6 rounded-t-lg 
+  justify-center flex items-center font-semibold pt-1;
+
+  width: 9.8rem;
+  top: -1.8rem;
+  left: -0.3rem;
+
+  & button {
+    @apply mr-2;
+  }
+  & button:hover {
+    @apply bg-indigo-600;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-150vw, 0, 0);
+  }
+}
+
+.main-panel-fog {
+  @apply bg-black absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none;
+  z-index: -1;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 1000%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: repeat-x;
+  }
+
+  &::before {
+    top: -4rem;
+    background-image: url("../../assets/fog1.png");
+    animation: drift 90s linear 0s infinite;
+  }
+
+  &::after {
+    top: 2rem;
+    background-image: url("../../assets//fog2.png");
+    animation: drift 40s linear 0s infinite;
+  }
+}
+
+#pin-pannel-button {
+  @apply absolute w-8 h-10 bg-indigo-700 rounded-r-lg flex flex-col items-center;
+
+  top: 4rem;
+  right: -2rem;
+
+  & svg {
+    @apply stroke-current text-indigo-400 w-6 transform transition-transform duration-300 scale-95;
+    &:hover,
+    &.pinned {
+      @apply scale-110 text-indigo-200;
+    }
+  }
+}
+
+@screen lg {
+  #main-panel {
+    @apply max-w-2xl;
+  }
+}
+
+@screen xl {
+  #main-panel {
+    @apply max-w-3xl;
+
+    & .perk-container {
+      @apply max-w-full;
+    }
+
+    & .perk-container picture {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
+  }
+}

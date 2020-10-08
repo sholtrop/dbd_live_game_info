@@ -1,0 +1,7 @@
+language: minimal
+dist: bionic
+os: linux
+jobs:
+  include:
+    - stage: frontend_unit_test
+      script: ./scripts/unit_tests.sh

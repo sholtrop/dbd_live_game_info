@@ -1,0 +1,26 @@
+@import "../../tailwind.css";
+
+#app-container {
+  @apply flex w-full absolute inset-0 
+  text-white justify-center select-none 
+  mt-20 pt-4 overflow-hidden;
+  height: 85%;
+}
+
+strong {
+  @apply font-bold;
+}
+
+img {
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+button:focus,
+input:focus {
+  outline: none;
+}

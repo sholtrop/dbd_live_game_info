@@ -1,0 +1,4 @@
+{
+  "plugins": ["cypress", "eslint-plugin-react"],
+  "extends": ["plugin:cypress/recommended"]
+}

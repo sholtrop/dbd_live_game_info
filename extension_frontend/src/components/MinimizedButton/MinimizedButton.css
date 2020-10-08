@@ -1,0 +1,25 @@
+#minimized-button {
+  bottom: 14rem;
+  right: 1rem;
+  @apply absolute transition-transform transform ease-linear duration-150 translate-x-40;
+  &.in-view {
+    @apply translate-x-0;
+  }
+
+  & div {
+    @apply w-16 h-16 p-2 text-indigo-600 flex-col
+    flex rounded-md transition-colors duration-200;
+  }
+
+  & span {
+    @apply text-xs text-white whitespace-no-wrap bg-black bg-opacity-50 p-1 rounded;
+  }
+
+  & svg {
+    @apply transform transition-transform duration-150 scale-100 rotate-45;
+  }
+  & svg:hover {
+    --transform-scale-x: 1.08;
+    --transform-scale-y: 1.08;
+  }
+}

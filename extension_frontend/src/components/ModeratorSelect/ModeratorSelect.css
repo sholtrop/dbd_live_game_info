@@ -1,0 +1,46 @@
+#moderator-select {
+  @apply flex flex-col ml-2 p-1 w-3/4 rounded-sm text-sm bg-gray-900 text-white;
+  max-width: 15rem;
+
+  & label {
+    @apply flex items-center relative select-none p-1 cursor-pointer;
+  }
+
+  & label:hover {
+    @apply bg-light-up;
+  }
+
+  & label + label {
+    @apply mt-1 border-t border-gray-700;
+  }
+
+  & input[type="checkbox"] {
+    @apply invisible;
+  }
+
+  & .checkbox {
+    @apply w-4 h-4 inline-block mr-2 bg-gray-600 text-white;
+  }
+
+  & input[type="checkbox"] + .checkbox {
+    @apply relative flex items-center justify-center;
+  }
+
+  & input[type="checkbox"]:checked + .checkbox {
+    @apply bg-indigo-600;
+    &::after {
+      @apply absolute;
+      content: "✓";
+    }
+  }
+}
+
+.no-mods {
+  @apply bg-gray-800 text-gray-400 p-3 rounded-lg;
+}
+
+@screen md {
+  #moderator-select {
+    @apply self-end mr-16;
+  }
+}

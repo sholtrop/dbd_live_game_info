@@ -1,0 +1,21 @@
+#playing-indicator,
+#notplaying-indicator {
+  @apply flex flex-col items-center justify-center w-full text-lg;
+}
+
+.game-mode {
+  @apply pl-1 pr-2 mx-2 mb-2 inline-flex items-center justify-center 
+  rounded font-semibold capitalize;
+
+  &.survivor {
+    @apply bg-gray-800 text-gray-100 border border-gray-700;
+  }
+
+  &.killer {
+    @apply bg-black text-gray-300 border border-gray-800;
+  }
+}
+
+.no-build-info {
+  @apply text-orange-500 italic mt-4 text-base w-64;
+}
