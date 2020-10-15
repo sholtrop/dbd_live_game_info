@@ -58,7 +58,6 @@ const KillerSearch: React.FC<Props> = ({
     const valid = validateInput(value);
     if (!valid) setHasValidInput(false);
   }, [value]);
-  console.log({ hasValidInput });
   const handleUserInput = (input: string) => {
     const valid = validateInput(input);
     setHasValidInput(valid);

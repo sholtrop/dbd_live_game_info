@@ -27,12 +27,35 @@ export type TwitchContextDelta = (keyof TwitchContext)[];
 
 export type TwitchConfig = { version: string; content: string } | undefined;
 
+export type Cost = number; // TODO: Change
+
+export type TwitchProduct = {
+  cost: Cost;
+  amount: string;
+  type: "bits",
+  displayName: string,
+  inDevelopment: boolean | undefined,
+  sku: string,
+}
+
+export type TwitchTransactionObject = {
+  displayName: string,
+  initiator: 'CURRENT_USER' | 'OTHER',
+  product: string,
+  domainID: string,
+  transactionID: string,
+  [index: string]: any,
+
+}
+
+
 declare global {
   interface Window {
     Twitch: {
       ext: {
         version: string;
         environment: "production";
+        send: (target: string, contentType: string, message: AnyPubsubEvent) => void;
         listen: (
           target: string,
           callback: (
@@ -78,7 +101,18 @@ declare global {
           requestIdShare: () => void;
           minimize: () => void;
         };
+        bits: {
+          getProducts: () => Promise<TwitchProduct[]>;
+          onTransactionComplete: (callback: (transactionObject: TwitchTransactionObject) => void) => void;
+        },
+        features: {
+          isBitsEnabled: boolean,
+          isChatEnabled: boolean,
+          isSubscriptionStatusAvailable: boolean,
+          onChanged: (callback: (changed: string[]) => void) => void;
+        }
       };
+
     };
   }
 }
@@ -218,7 +252,15 @@ export type InfoTextNode =
 
 export type InfoTextTree = InfoTextNode[];
 
-export type PubsubEvent = { event: string; data: object };
+export type PubSubEventName = "config" | "newBuild" | "oauthReady"
+
+export type PubsubEvent<T extends PubSubEventName> = { event: T; 
+  data: T extends "config" ? BroadCasterConfig : 
+        T extends "newBuild" ? Build : 
+        T extends "oauthReady" ? null : never
+      };
+
+export type AnyPubsubEvent = PubsubEvent<"config"> | PubsubEvent<"newBuild"> | PubsubEvent<"oauthReady">
 
 export const BuildRequestPrices = [
   100,

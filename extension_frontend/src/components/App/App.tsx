@@ -14,6 +14,7 @@ import {
   ModeratorsCanSet,
   PubsubEvent,
   BuildRequestsEnabledFor,
+  AnyPubsubEvent,
 } from "../../types";
 import ModeratorView from "../ModeratorView/ModeratorView";
 import ShareIdentityView from "../ShareIdentityView/ShareIdentityView";
@@ -79,15 +80,17 @@ const App: React.FC = () => {
         build && setActiveBuild(build);
       }
     };
-    twitch.listen("broadcast", (target, _, message) => {
-      const { event, data } = JSON.parse(message) as PubsubEvent;
-      if (event === "newBuild") {
+    twitch.listen("broadcast", (_, __, message) => {
+      const pubsub = JSON.parse(message) as AnyPubsubEvent;
+      if (pubsub.event === "newBuild") {
         !initialBuildReceived && setInitialBuildReceived(true);
-        setActiveBuild(data as Build);
+        setActiveBuild(pubsub.data);
         setRecentlyUpdated(true);
       }
-
-      console.log("PUBSUB MESSAGE", { event, data });
+      else if (pubsub.event === "config") {
+        setConfiguration(pubsub.data)
+      }
+      console.log("PUBSUB MESSAGE", { event: pubsub.event, data: pubsub.data });
     });
     twitch.onAuthorized(handleAuthorized);
     twitch.onContext(({ isFullScreen }, delta) => {

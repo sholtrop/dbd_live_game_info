@@ -77,7 +77,7 @@ const AddonSearch: React.FC<Props> = ({
         normalizedAddon.includes(normalizedInput ?? "")
       );
     }
-  );
+  ).sort()
   return (
     <div id="addon-search-container">
       <div id="addon-search">

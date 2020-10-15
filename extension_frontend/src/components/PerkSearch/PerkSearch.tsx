@@ -107,7 +107,7 @@ const PerkSearch: React.FC<Props> = ({
           if (constraints?.exclude && constraints.exclude.includes(perk))
             return false;
           return perk.toLowerCase().includes(input.toLowerCase().trim());
-        });
+        }).sort()
   const handlePerkClick = (perkName: string | null) => {
     setInput(perkName);
     onChange(perkName, rank, true);

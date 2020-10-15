@@ -14,6 +14,7 @@ import {
   PubsubEvent,
   BuildRequestsEnabledFor,
   BuildRequestPrices,
+  AnyPubsubEvent,
 } from "../../types";
 import { CheckIcon, BuildViewIcon } from "../Icons/Icons";
 
@@ -85,12 +86,18 @@ const LockedOverlay: React.FC<LockedOverlayProps> = ({ token, loading }) => {
 interface BuildRequestPromptProps {
   onChange: (data: BroadCasterConfig["buildRequests"]) => void;
   buildRequests: BroadCasterConfig["buildRequests"];
+  bitsEnabled: boolean;
+  subsEnabled: boolean;
 }
 
 export const BuildRequestPrompt: React.FC<BuildRequestPromptProps> = ({
   onChange,
   buildRequests,
+  bitsEnabled,
+  subsEnabled
 }) => {
+  if (!bitsEnabled && buildRequests.enabledFor === BuildRequestsEnabledFor.bitgivers)
+    onChange({...buildRequests, enabledFor: BuildRequestsEnabledFor.noone})
   return (
     <div className="config-step">
       <h2 className="config-question">
@@ -135,7 +142,7 @@ export const BuildRequestPrompt: React.FC<BuildRequestPromptProps> = ({
             }
             text="Yes, but only subscribers can request a build"
           />
-          <div className="flex flex-col self-start">
+          {bitsEnabled ? <div className="flex flex-col self-start">
             <RadioButton
               onChange={() =>
                 onChange({
@@ -158,7 +165,7 @@ export const BuildRequestPrompt: React.FC<BuildRequestPromptProps> = ({
               <span className="text-xl text-orange-500">*</span> with the option
               to give subscribers some free build requests per month
             </p>
-          </div>
+          </div> : null}
         </ul>
 
         {buildRequests.enabledFor !== BuildRequestsEnabledFor.noone ? (
@@ -284,6 +291,11 @@ export const WhoCanSetPrompt: React.FC<WhoCanSetPromptProps> = ({
 
 let debounceTimer: NodeJS.Timeout;
 
+function publishConfig(config: BroadCasterConfig) {
+  const {send} = getTwitch()
+  send('broadcast', 'application/json', {event: 'config', data: config});
+}
+
 const ConfigPage: React.FC = () => {
   const [auth, setAuth] = useState<Auth | null>(null);
   const [twitch] = useState(getTwitch());
@@ -305,11 +317,14 @@ const ConfigPage: React.FC = () => {
             "1",
             JSON.stringify(newConfig)
           );
+          publishConfig(newConfig)
           setSaving(false);
         }, debounceMs);
         setSaving(true);
-      } else
+      } else {
         twitch.configuration.set("broadcaster", "1", JSON.stringify(newConfig));
+        publishConfig(newConfig)
+      }
       return newConfig;
     });
   };
@@ -338,7 +353,7 @@ const ConfigPage: React.FC = () => {
             console.log("editConfig: could not get mods");
             editConfig({ modsCanSet: ModeratorsCanSet.no }, 0);
             twitch.listen("broadcast", (target, _, message) => {
-              const data: PubsubEvent = JSON.parse(message);
+              const data: AnyPubsubEvent = JSON.parse(message);
               console.log("Pubsub event:", { data });
               if (data.event === "oauthReady") {
                 setOauthReady(true);
@@ -404,12 +419,13 @@ const ConfigPage: React.FC = () => {
         jwt={auth.getToken()}
         oauthReady={oauthReady}
       />
-      {
-        <BuildRequestPrompt
-          onChange={(info) => editConfig({ buildRequests: info }, 400)}
-          buildRequests={config.buildRequests}
-        />
-      }
+      <BuildRequestPrompt
+        onChange={(info) => editConfig({ buildRequests: info }, 400)}
+        buildRequests={config.buildRequests}
+        bitsEnabled={twitch.features.isBitsEnabled}
+        subsEnabled={twitch.features.isSubscriptionStatusAvailable}
+      /> 
+      
       <SavingIndicator saving={saving} />
     </main>
   );
