@@ -1,0 +1,7 @@
+#request-container {
+  @apply flex flex-col;
+
+  .info-text {
+    @apply p-2 bg-indigo-700 text-indigo-200;
+  }
+}

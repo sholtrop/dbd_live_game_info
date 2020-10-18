@@ -5,7 +5,12 @@ import Auth from "../../auth/authentication";
 import MainPanel from "../MainPanel/MainPanel";
 import Loading from "../Loading/Loading";
 import BuildView from "../BuildView/BuildView";
-import { BuildViewIcon, LockIcon, IdentityIcon } from "../Icons/Icons";
+import {
+  BuildViewIcon,
+  LockIcon,
+  IdentityIcon,
+  RequestIcon,
+} from "../Icons/Icons";
 import {
   UserAuth,
   Build,
@@ -19,6 +24,7 @@ import {
 import ModeratorView from "../ModeratorView/ModeratorView";
 import ShareIdentityView from "../ShareIdentityView/ShareIdentityView";
 import MinimizedButton from "../MinimizedButton/MinimizedButton";
+import RequestBuildView from "../RequestBuildView/RequestBuildView";
 
 const defaultBuild: Build = {
   mode: "notPlaying",
@@ -63,6 +69,9 @@ const App: React.FC = () => {
     },
   });
   const [recentlyUpdated, setRecentlyUpdated] = useState(false);
+  const [requestsEnabled, setRequestsEnabled] = useState(
+    process.env.NODE_ENV === "development"
+  );
 
   const emitBuild = async (build: Build) => auth!.emitBuild(build);
 
@@ -86,9 +95,8 @@ const App: React.FC = () => {
         !initialBuildReceived && setInitialBuildReceived(true);
         setActiveBuild(pubsub.data);
         setRecentlyUpdated(true);
-      }
-      else if (pubsub.event === "config") {
-        setConfiguration(pubsub.data)
+      } else if (pubsub.event === "config") {
+        setConfiguration(pubsub.data);
       }
       console.log("PUBSUB MESSAGE", { event: pubsub.event, data: pubsub.data });
     });
@@ -102,6 +110,22 @@ const App: React.FC = () => {
     });
   }, []);
 
+  useEffect(() => {
+    return;
+    const { enabledFor } = configuration.buildRequests;
+    if (enabledFor === BuildRequestsEnabledFor.noone) setRequestsEnabled(false);
+    else if (
+      enabledFor === BuildRequestsEnabledFor.subscribers &&
+      twitch.viewer.subscriptionStatus
+    )
+      setRequestsEnabled(true);
+    else setRequestsEnabled(true);
+  }, [configuration, auth]);
+  console.log({
+    requestsEnabled,
+    configuration,
+    substatus: twitch.viewer.subscriptionStatus,
+  });
   if (
     !dbdInfo ||
     !Object.values(dbdInfo).every((v) => Boolean(v)) ||
@@ -144,7 +168,6 @@ const App: React.FC = () => {
       </div>
     );
   }
-
   return (
     <div
       className="h-full w-full"
@@ -202,6 +225,13 @@ const App: React.FC = () => {
                   ),
                   panelIcon: ["Identity", <IdentityIcon />],
                   accessibleBy: ["viewer"],
+                }
+              : null,
+
+            requestsEnabled
+              ? {
+                  view: <RequestBuildView broadcasterConfig={configuration} />,
+                  panelIcon: ["Requests", <RequestIcon className="w-6 h-6" />],
                 }
               : null,
           ])}

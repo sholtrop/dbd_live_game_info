@@ -18,13 +18,13 @@
   ],
   "extensionViews": [
     {
-      "channelId": "123456787",
+      "channelId": "29697242",
       "configurationAnchor": "video_overlay",
       "displayChannelName": "sjorsholtrop",
       "features": {
-        "isBitsEnabled": false,
+        "isBitsEnabled": true,
         "isChatEnabled": false,
-        "isSubscriptionStatusAvailable": false
+        "isSubscriptionStatusAvailable": true
       },
       "frameSize": {
         "width": 1280,
@@ -32,34 +32,12 @@
       },
       "id": "1",
       "isPopout": false,
-      "label": "broadcaster",
-      "linked": false,
-      "linkedUserId": "",
-      "orientation": "Portrait",
-      "type": "video_overlay",
-      "viewerType": "Broadcaster"
-    },
-    {
-      "channelId": "29697242",
-      "configurationAnchor": "video_overlay",
-      "displayChannelName": "sjorsholtrop",
-      "features": {
-        "isBitsEnabled": true,
-        "isChatEnabled": false,
-        "isSubscriptionStatusAvailable": false
-      },
-      "frameSize": {
-        "width": 1280,
-        "height": 720
-      },
-      "id": "2",
-      "isPopout": false,
-      "label": "config",
+      "label": "viewer",
       "linked": true,
       "linkedUserId": "265737932",
       "orientation": "Portrait",
-      "type": "config",
-      "viewerType": "Broadcaster"
+      "type": "video_overlay",
+      "viewerType": "Logged-In Viewer"
     }
   ],
   "manifest": {

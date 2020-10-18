@@ -35,6 +35,7 @@ function createExpressApp() {
     log.warn(`Using development/test secret \`super-secret\``);
     app.set("SECRET_KEY", Buffer.from(`super-secret`, "base64"));
   }
+  app.disable('etag');
   return app;
 }
 

@@ -110,9 +110,13 @@ declare global {
           isChatEnabled: boolean,
           isSubscriptionStatusAvailable: boolean,
           onChanged: (callback: (changed: string[]) => void) => void;
+        },
+        viewer: {
+          isLinked: boolean,
+          sessionToken: string,
+          subscriptionStatus: { tier: "1000" | "2000" | "3000"} | null
         }
       };
-
     };
   }
 }

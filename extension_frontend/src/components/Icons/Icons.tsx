@@ -1,26 +1,6 @@
 import React from "react";
 import { Icon } from "../../types";
 
-// export const BuildViewIcon: Icon = ({ className = "" }) => (
-//   <svg
-//     xmlns="http://www.w3.org/2000/svg"
-//     className={"icon icon-tabler icon-tabler-grid stroke-current " + className}
-//     width="24"
-//     height="24"
-//     viewBox="0 0 24 24"
-//     strokeWidth="1.5"
-//     fill="none"
-//     strokeLinecap="round"
-//     strokeLinejoin="round"
-//   >
-//     <path stroke="none" d="M0 0h24v24H0z" />
-//     <rect x="4" y="4" width="6" height="6" rx="1" />
-//     <rect x="14" y="4" width="6" height="6" rx="1" />
-//     <rect x="4" y="14" width="6" height="6" rx="1" />
-//     <rect x="14" y="14" width="6" height="6" rx="1" />
-//   </svg>
-// );
-
 export const LockIcon: Icon = ({ className = "" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -308,5 +288,25 @@ export const PinIcon: Icon = ({ className = "" }) => (
     <line x1="4" y1="20" x2="9.5" y2="14.5" />
     <path d="M6 11l7 7l1 -1l1 -4l4 -4m-4 -4l-4 4l-4 1l-1 1" />
     <line x1="14" y1="4" x2="20" y2="10" />
+  </svg>
+);
+
+export const RequestIcon: Icon = ({ className = "" }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className={"icon icon-tabler icon-tabler-help stroke-current " + className}
+    width="60"
+    height="60"
+    viewBox="0 0 24 24"
+    strokeWidth="1.5"
+    stroke="#9C27B0"
+    fill="none"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <circle cx="12" cy="12" r="9" />
+    <line x1="12" y1="17" x2="12" y2="17.01" />
+    <path d="M12 13.5a1.5 1.5 0 0 1 1 -1.5a2.6 2.6 0 1 0 -3 -4" />
   </svg>
 );
