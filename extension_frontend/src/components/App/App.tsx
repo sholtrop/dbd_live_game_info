@@ -26,7 +26,7 @@ import ShareIdentityView from "../ShareIdentityView/ShareIdentityView";
 import MinimizedButton from "../MinimizedButton/MinimizedButton";
 import RequestBuildView from "../RequestBuildView/RequestBuildView";
 
-const defaultBuild: Build = {
+export const defaultBuild: Build = {
   mode: "notPlaying",
   addons: null,
   killerName: null,
@@ -121,11 +121,11 @@ const App: React.FC = () => {
       setRequestsEnabled(true);
     else setRequestsEnabled(true);
   }, [configuration, auth]);
-  console.log({
-    requestsEnabled,
-    configuration,
-    substatus: twitch.viewer.subscriptionStatus,
-  });
+  // console.log({
+  //   requestsEnabled,
+  //   configuration,
+  //   substatus: twitch.viewer.subscriptionStatus,
+  // });
   if (
     !dbdInfo ||
     !Object.values(dbdInfo).every((v) => Boolean(v)) ||
@@ -230,7 +230,12 @@ const App: React.FC = () => {
 
             requestsEnabled
               ? {
-                  view: <RequestBuildView broadcasterConfig={configuration} />,
+                  view: (
+                    <RequestBuildView
+                      broadcasterConfig={configuration}
+                      killerPowers={dbdInfo.killers}
+                    />
+                  ),
                   panelIcon: ["Requests", <RequestIcon className="w-6 h-6" />],
                 }
               : null,

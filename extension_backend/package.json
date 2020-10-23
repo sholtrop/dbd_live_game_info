@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "ts-node-dev --rs src/index.ts",
+    "dev": "scripts/startRedis.sh && ts-node-dev --rs src/index.ts",
     "build": "tsc",
     "test": "jest --runInBand",
     "start": "NODE_ENV=production node build/index.js"
